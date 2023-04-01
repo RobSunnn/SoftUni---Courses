@@ -1,6 +1,7 @@
 package fundamentals.P14.AssociativeArrays.exercise;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class P10SoftUniExamResults {
     public static void main(String[] args) {
@@ -34,15 +35,32 @@ public class P10SoftUniExamResults {
                 int currentValueSubmissions = submissions.get(language);
                 submissions.put(language, currentValueSubmissions + 1);
             }
-            
+
             command = scanner.nextLine();
 
         }
 
-        System.out.printf("Results:%n");
+        Map<String, Integer> resultMap = new LinkedHashMap<>();
+
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            System.out.printf("%s | %s%n", entry.getKey(), String.join("", entry.getValue().get(1)));
+            List<Integer> resultsList = new ArrayList<>();
+            List<String> list = entry.getValue();
+            for (int i = 0; i < list.size(); i++) {
+                if (i % 2 != 0) {
+                    resultsList.add(Integer.parseInt(list.get(i)));
+                }
+
+            }
+            resultsList = resultsList.stream().sorted((e1, e2) -> Integer.compare(e2, e1)).collect(Collectors.toList());
+            resultMap.put(entry.getKey(), resultsList.get(0));
         }
+
+
+        System.out.printf("Results:%n");
+        for (Map.Entry<String, Integer> entry : resultMap.entrySet()) {
+            System.out.printf("%s | %s%n", entry.getKey(), entry.getValue());
+        }
+
         System.out.printf("Submissions:%n");
         for (Map.Entry<String, Integer> entry : submissions.entrySet()) {
             System.out.printf("%s - %d%n", entry.getKey(), entry.getValue());
