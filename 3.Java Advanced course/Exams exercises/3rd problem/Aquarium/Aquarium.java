@@ -41,6 +41,7 @@ public class Aquarium {
         }
 
     }
+
     public boolean remove(String name) {
         for (Fish fish : this.fishInPool) {
 
@@ -67,7 +68,7 @@ public class Aquarium {
 
     public String report() {
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(String.format("Aquarium: %s ^ Size: %d", getName(), getSize())).append(System.lineSeparator());
         for (Fish fish : this.fishInPool) {
             builder.append(fish).append(System.lineSeparator());
