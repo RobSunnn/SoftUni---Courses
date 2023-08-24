@@ -14,6 +14,7 @@ public class P02BasicStackOperations {
         int n = integers[0];
         int s = integers[1];
         int x = integers[2];
+        
         int[] elements = Arrays.stream(scanner.nextLine().split("\\s+"))
                 .mapToInt(Integer::parseInt).toArray();
 
