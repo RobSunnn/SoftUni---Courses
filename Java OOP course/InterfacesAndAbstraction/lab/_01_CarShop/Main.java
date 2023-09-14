@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        CarImpl car = new CarImpl("Sd", "Das", 11, "Asf");
-
+       
         Car seat = new Seat("Leon", "Gray", 110, "Spain", 11111.1);
         Car audi = new Audi("ALLROAD", "Green", 300, "Germany", 3, 99.9);
 
