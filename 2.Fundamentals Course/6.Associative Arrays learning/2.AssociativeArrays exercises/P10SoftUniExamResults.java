@@ -1,67 +1,59 @@
 package fundamentals.P14.AssociativeArrays.exercise;
 
-import java.util.*;
-import java.util.stream.Collectors;
 
-public class P10SoftUniExamResults {
+import java.util.*;
+
+
+public class Exercise {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
-        String command = scanner.nextLine();
-        Map<String, List<String>> map = new LinkedHashMap<>();
+
+        String input = scanner.nextLine();
+
+        Map<String, Integer> results = new LinkedHashMap<>();
         Map<String, Integer> submissions = new LinkedHashMap<>();
 
-
-        while (!command.equals("exam finished")) {
-            String[] inputLine = command.split("-");
-            String username = inputLine[0];
-            String language = inputLine[1];
-
-            if (command.contains("banned")) {
-                map.remove(username);
-                break;
+        while (!input.equals("exam finished")) {
+            String[] info = input.split("-");
+            String student = info[0];
+            
+            if (input.endsWith("banned")) {
+                results.remove(student);
+                input = scanner.nextLine();
+                continue;
             }
-            int points = Integer.parseInt(inputLine[2]);
-            if (!map.containsKey(username)) {
-                map.put(username, new ArrayList<>());
+
+            String language = info[1];
+            int grade = Integer.parseInt(info[2]);
+
+            if (!results.containsKey(student)) {
+                results.put(student, grade);
+            } else {
+                int currentResult = results.get(student);
+
+                if (currentResult < grade) {
+                    results.put(student, grade);
+                }
             }
-            map.get(username).add(0, language);
-            map.get(username).add(1, String.valueOf(points));
 
             if (!submissions.containsKey(language)) {
                 submissions.put(language, 0);
-                int currentValueSubmissions = submissions.get(language);
-                submissions.put(language, currentValueSubmissions + 1);
-            } else {
-                int currentValueSubmissions = submissions.get(language);
-                submissions.put(language, currentValueSubmissions + 1);
-            }
-
-            command = scanner.nextLine();
-
-        }
-
-        Map<String, Integer> resultMap = new LinkedHashMap<>();
-
-        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            List<Integer> resultsList = new ArrayList<>();
-            List<String> list = entry.getValue();
-            for (int i = 0; i < list.size(); i++) {
-                if (i % 2 != 0) {
-                    resultsList.add(Integer.parseInt(list.get(i)));
-                }
 
             }
-            resultsList = resultsList.stream().sorted((e1, e2) -> Integer.compare(e2, e1)).collect(Collectors.toList());
-            resultMap.put(entry.getKey(), resultsList.get(0));
+            submissions.put(language, submissions.get(language) + 1);
+
+
+
+            input = scanner.nextLine();
         }
 
-
-        System.out.printf("Results:%n");
-        for (Map.Entry<String, Integer> entry : resultMap.entrySet()) {
-            System.out.printf("%s | %s%n", entry.getKey(), entry.getValue());
+        System.out.println("Results:");
+        for (Map.Entry<String, Integer> entry : results.entrySet()) {
+            System.out.printf("%s | %d%n", entry.getKey(), entry.getValue());
         }
 
-        System.out.printf("Submissions:%n");
+        System.out.println("Submissions:");
         for (Map.Entry<String, Integer> entry : submissions.entrySet()) {
             System.out.printf("%s - %d%n", entry.getKey(), entry.getValue());
         }
