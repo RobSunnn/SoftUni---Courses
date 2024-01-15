@@ -17,8 +17,6 @@ public class P12DragonArmy {
             String dragonType = inputLine[0];
             String dragonName = inputLine[1];
 
-
-
             Integer damage = null;
             if (!inputLine[2].equals("null")) {
                 damage = Integer.parseInt(inputLine[2]);
@@ -44,6 +42,7 @@ public class P12DragonArmy {
                 for (Dragon d : dragonsMap.get(dragonType)) {
                     if (d.getName().equals(dragonName)) {
                         checkingDragon = d;
+                        break;
                     }
                 }
                 if (checkingDragon == null) {
