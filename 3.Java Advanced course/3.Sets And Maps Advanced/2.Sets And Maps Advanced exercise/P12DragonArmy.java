@@ -57,7 +57,9 @@ public class P12DragonArmy {
                                 dragonsMap.get(dragonType).get(j).setHealth(finalHealth);
                                 dragonsMap.get(dragonType).get(j).setDamage(finalDamage);
                                 dragonsMap.get(dragonType).get(j).setArmor(finalArmor);
+                                break;
                             }
+                        
                         }
                     });
 
