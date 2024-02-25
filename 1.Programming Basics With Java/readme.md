@@ -10,4 +10,4 @@ And this is my certificate from this course.
 
 
   ![image](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
-  ![Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
+  [Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
