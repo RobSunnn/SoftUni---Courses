@@ -8,6 +8,6 @@ how to work with console.
 
 And this is my certificate from this course.
 
-  ![certificateBasics](https://github.com/RobSunnn/SoftUni---Courses/assets/100959760/4665521a-febf-4ab6-a9e7-eaef0c3ed2e2)
+![certificateBasics](https://github.com/RobSunnn/SoftUni---Courses/assets/100959760/e4373c75-0948-4bbb-afc9-d6a5aedc63a1)
 
-  [Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
+[Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
