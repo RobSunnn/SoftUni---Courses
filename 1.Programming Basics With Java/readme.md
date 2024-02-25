@@ -8,5 +8,5 @@ how to work with console.
 
 And this is my certificate from this course.
 
-
-*    [Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
+  ![image](file:///[C:/Users/PC/Downloads/certificateBasics.jpeg](https://softuni.bg/certificates/details/125310/1d892477) "cert")
+  [Programming Basics](https://softuni.bg/certificates/details/125310/1d892477 "Learning the basics of programming language Java")
