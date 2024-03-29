@@ -1,4 +1,4 @@
-This is how my education started with the Programming basics course in SoftUni!
+This is how my education started with the Programming Basics course.
 
 This course gave me basic coding skills using Java and how to use IDE.
 Here we started to study about data types and variables, conditional statements,
