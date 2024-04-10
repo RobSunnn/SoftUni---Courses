@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head}">
+</head>
+
+<body>
+
+<div  th:replace="~{fragments/navbar}">
+
+</div>
+
+
+<div class="container-fluid">
+    <h5 class="text-center text-white mt-5">Welcome to MobiLeLeLe,
+        <th:block th:if="${@currentUser.isLogged()}" th:text="${@currentUser.getFullName()}"></th:block>
+        <th:block th:unless="${@currentUser.isLogged()}" >Anonymous</th:block>
+    </h5>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
+
+</body>
+</html>
