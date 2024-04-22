@@ -1,10 +1,10 @@
 package org.softuni.mobilele.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.softuni.mobilele.model.entity.enums.UserRoleEnum;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,15 +21,22 @@ public class UserEntity extends BaseEntity {
 
     private boolean isActive;
 
-    private UserRoleEnum role;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRoleEntity> roles;
     private String imageUrl;
 
     private LocalDateTime created;
 
     private LocalDateTime modified;
 
-    public UserEntity() {}
+    public UserEntity() {
+    }
 
     public String getUsername() {
         return username;
@@ -79,14 +86,6 @@ public class UserEntity extends BaseEntity {
         isActive = active;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
-    }
-
-    public void setRole(UserRoleEnum role) {
-        this.role = role;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -109,5 +108,13 @@ public class UserEntity extends BaseEntity {
 
     public void setModified(LocalDateTime modified) {
         this.modified = modified;
+    }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
     }
 }

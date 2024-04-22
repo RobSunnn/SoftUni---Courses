@@ -1,10 +1,8 @@
 package org.softuni.mobilele.web;
 
-import org.softuni.mobilele.model.dto.UserLoginDTO;
 import org.softuni.mobilele.model.dto.UserRegisterDTO;
 import org.softuni.mobilele.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -27,21 +25,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/login")
-    public ModelAndView login(UserLoginDTO userLoginDTO) {
 
-        userService.loginUser(userLoginDTO);
-
-        return new ModelAndView("redirect:/");
-    }
-
-
-    @GetMapping("/logout")
-    public String logout() {
-        userService.logout();
-
-        return "redirect:/";
-    }
 
 
     @GetMapping("/register")
