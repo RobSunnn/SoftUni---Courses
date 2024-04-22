@@ -18,10 +18,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.authorizeHttpRequests(
-
-
                 authorizeRequests -> authorizeRequests
-                        //First -> static resource permission to be visible
+                        //First -> static resource - permission to be visible
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Everyone can see the home page, login and register and all offers.
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()

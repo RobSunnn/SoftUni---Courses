@@ -19,7 +19,7 @@
         <a class="nav-link" href="/brands/all">All Brands</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" sec:authorize="isAuthenticated()">
         <a class="nav-link" href="/offers/add">Add Offer</a>
       </li>
 
