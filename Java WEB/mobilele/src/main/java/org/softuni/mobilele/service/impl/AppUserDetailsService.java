@@ -1,7 +1,10 @@
 package org.softuni.mobilele.service.impl;
 
 import org.softuni.mobilele.model.entity.UserEntity;
+import org.softuni.mobilele.model.entity.UserRoleEntity;
 import org.softuni.mobilele.repository.UserRepository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,17 +25,29 @@ public class AppUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
        return userRepository.findByEmail(email)
-                .map(this::map)
+                .map(AppUserDetailsService::map)
                 .orElseThrow(() -> new UsernameNotFoundException("User with email:" + email + "not found!"));
 
     }
 
-    private UserDetails map(UserEntity userEntity) {
+
+    // map the userEntity to UserDetails bean because Spring need it
+    //also here we control what we need, like if we want user first name we need to add it here,
+    // so we can use it in thymeleaf EXAMPLE IS .username in UserDetails
+
+    private static UserDetails map(UserEntity userEntity) {
         return User
-                .withUsername(userEntity.getEmail())
+                .withUsername(userEntity.getUsername())
                 .password(userEntity.getPassword())
-                .authorities(List.of())// todo: add roles
+                .authorities(userEntity.getRoles().stream().map(AppUserDetailsService::map).toList())
+                .username(userEntity.getFirstName() + " " + userEntity.getLastName())
                 .build();
+    }
+
+    // to take the roles of the user we need to give granted authority to the user
+    private static GrantedAuthority map(UserRoleEntity userRoleEntity) {
+        return new SimpleGrantedAuthority(
+                "ROLE_" + userRoleEntity.getRole().name());
     }
 
 }

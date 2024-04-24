@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <h5 class="text-center text-white mt-5">Welcome to MobiLeLeLe,
         <th:block sec:authorize="isAuthenticated()">
-            <th:block sec:authentication="name"></th:block>
+            <th:block  th:text="${#authentication.getPrincipal().username}" ></th:block>
         </th:block>
 
         <th:block sec:authorize="!isAuthenticated()">Anonymous</th:block>

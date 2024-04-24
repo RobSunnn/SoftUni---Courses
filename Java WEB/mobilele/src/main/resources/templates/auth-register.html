@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org" >
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
 <head th:replace="~{fragments/head}">
@@ -12,7 +13,7 @@
 
 </div>
 
-<div class="container">
+<div class="container" sec:authorize="!isAuthenticated()">
     <h2 class="text-center text-white">Register User</h2>
     <form th:method="POST"
           th:action="@{/users/register}"
