@@ -11,7 +11,6 @@ import java.util.List;
 public class UserEntity extends BaseEntity {
 
     @Column(nullable = false, unique = true)
-
     private String username;
 
     @Column(nullable = false, unique = true)
@@ -42,8 +41,7 @@ public class UserEntity extends BaseEntity {
 
     private LocalDateTime modified;
 
-    public UserEntity() {
-    }
+    public UserEntity() {}
 
     public String getUsername() {
         return username;

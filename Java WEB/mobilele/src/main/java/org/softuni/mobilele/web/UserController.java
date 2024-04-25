@@ -3,7 +3,9 @@ package org.softuni.mobilele.web;
 import org.softuni.mobilele.model.dto.UserRegisterDTO;
 import org.softuni.mobilele.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,12 +22,20 @@ public class UserController {
 
 
     @GetMapping("/login")
+//    @PreAuthorize("isAnonymous()")
     public ModelAndView login() {
         return new ModelAndView("auth-login");
     }
 
+    @PostMapping("/login-error")
+    public String onFailure(@ModelAttribute("email") String email,
+            Model model) {
 
+        model.addAttribute("email", email);
+        model.addAttribute("bad_credentials", "true");
 
+        return "auth-login";
+    }
 
 
     @GetMapping("/register")

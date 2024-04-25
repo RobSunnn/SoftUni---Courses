@@ -28,9 +28,10 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
         ).formLogin(
             formLogin -> {
-                // redirect here when we try to access something we are not allow to
-                // and this is the page to perform login
-                formLogin.loginPage("/users/login")
+
+                // this is the page to perform login
+                formLogin
+                        .loginPage("/users/login")
 
                         //names of input fields need to match the name in html
                         //favicon making problems if it's not in static folder..........
@@ -40,9 +41,11 @@ public class SecurityConfiguration {
                         .failureForwardUrl("/users/login-error");
             }
         ).logout(
-                logout -> logout.logoutUrl("/users/logout")
-                        .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true)
+                logout -> {
+                    logout.logoutUrl("/users/logout")
+                            .logoutSuccessUrl("/")
+                            .invalidateHttpSession(true);
+                }
         );
 
         return httpSecurity.build();

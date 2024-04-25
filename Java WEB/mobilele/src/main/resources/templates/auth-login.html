@@ -19,6 +19,7 @@
             <input id="email"
                    name="email"
                    type="text"
+                   th:value="${email}"
                    class="form-control"
                    placeholder="Enter your Email"/>
         </div>
@@ -32,7 +33,7 @@
 
         </div>
         
-        <p class="errors alert alert-danger">
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
             Invalid username or password.
         </p>
 

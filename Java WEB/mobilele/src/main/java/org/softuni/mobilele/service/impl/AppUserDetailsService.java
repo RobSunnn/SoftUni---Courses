@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class AppUserDetailsService implements UserDetailsService {
 
        return userRepository.findByEmail(email)
                 .map(AppUserDetailsService::map)
-                .orElseThrow(() -> new UsernameNotFoundException("User with email:" + email + "not found!"));
+                .orElseThrow(() -> new UsernameNotFoundException("User with email: " + email + " not found!"));
 
     }
 
