@@ -15,10 +15,10 @@ public class ModelEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CategoryOfVehicleEnum category;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
-    @Column(nullable = false)
+    @Column
     private Integer startYear;
 
     @Column

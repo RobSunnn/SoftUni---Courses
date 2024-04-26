@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/head}">
 </head>
@@ -10,15 +11,15 @@
 
 </div>
 
-<div class="container">
+<div class="container" th:object="${allBrands}">
     <h2 class="text-center text-white m-3">All Brands</h2>
     <div class='row mb-4 d-flex justify-content-around'>
-        <div  class="brand-section col-md-5 mr-auto d-flex flex-column">
+        <div th:each="brand : ${allBrands}"  class="brand-section col-md-5 mr-auto d-flex flex-column">
             <h2>Car brand:
-                <span >Brand name</span>
+                <span th:text="${brand.getBrandName()}">Brand name</span>
             </h2>
-            <div>Models:
-                <table>
+            <div >Models:
+                <table th:each="model : ${brand.getModels()}">
                     <tr>
                         <th>No</th>
                         <th>Name</th>
@@ -29,12 +30,12 @@
                     </tr>
                     <tr>
                         <th>No</th>
-                        <th >Model Name</th>
-                        <th >Model Category</th>
+                        <th th:text="${model.getModelName()}">Model Name</th>
+                        <th th:text="${model.getCategory()}">Model Category</th>
                         <th >Model Start Year</th>
                         <th >Model End Year</th>
-                        <th><img alt="image" src="/"
-                                 class="img-thumbnail rounded"></th>
+                        <th ><img th:src="@{${model.getImageUrl()}}" alt="image"
+                                  class="img-thumbnail rounded"></th>
                     </tr>
                 </table>
             </div>

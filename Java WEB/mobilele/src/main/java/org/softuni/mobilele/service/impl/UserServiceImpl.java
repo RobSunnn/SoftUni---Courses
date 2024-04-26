@@ -36,11 +36,11 @@ public class UserServiceImpl implements UserService {
         UserEntity user = new UserEntity();
         user.setActive(true);
         user.setCreated(LocalDateTime.now());
-        user.setFirstName(userRegisterDTO.firstName());
-        user.setLastName(userRegisterDTO.lastName());
-        user.setUsername(userRegisterDTO.username());
-        user.setEmail(userRegisterDTO.email());
-        user.setPassword(passwordEncoder.encode(userRegisterDTO.password()));
+        user.setFirstName(userRegisterDTO.getFirstName());
+        user.setLastName(userRegisterDTO.getLastName());
+        user.setUsername(userRegisterDTO.getUsername());
+        user.setEmail(userRegisterDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
 
         return user;
     }

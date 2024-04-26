@@ -30,6 +30,13 @@ body {
 
 .brand-section {
      background-image: linear-gradient(to bottom right, rgba(220, 220, 220, 0.9), rgba(255, 255, 255, 0.9));
+     margin-top: 2em;
+
+}
+
+.brand-section img {
+     width: 240px;
+     height: 120px;
 }
 
 td, th {
