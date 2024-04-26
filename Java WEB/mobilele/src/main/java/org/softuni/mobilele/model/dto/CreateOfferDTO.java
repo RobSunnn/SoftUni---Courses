@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 public class CreateOfferDTO {
 
-    @NotNull
+
     private ModelEntity model;
 
     @Size(min = 2, max = 150)
