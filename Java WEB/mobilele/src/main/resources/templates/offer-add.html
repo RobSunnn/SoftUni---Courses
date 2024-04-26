@@ -25,13 +25,15 @@
                 <label class="text-center text-white font-weight-bold" for="model">Model</label>
 
                 <select id="model"
-
                         name="model"
                         class="form-control">
+
                     <option  value="">- Select a model -</option>
+
                     <optgroup th:each="brand : ${allBrands}" th:value="${brand.getBrandName()}"  th:label="${brand.getBrandName()}" >
-                        <option th:each="m : ${brand.getModels()}" th:text="${m.getModelName()}">Model</option>
+                        <option th:each="m : ${brand.getModels()}" th:value="${m.getModelName()}" th:text="${m.getModelName()}">Model</option>
                     </optgroup>
+
                 </select>
 
 <!--                <p th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="errors alert alert-danger">-->
@@ -58,14 +60,14 @@
 
             </div>
         </div>
-        <div th:object="${engineTypes}"  class="row">
+        <div  class="row">
             <div class="form-group col-md-6 mb-3">
 
                 <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
 
-                <select id="engine" class="form-control" >
+                <select id="engine" name="engine" class="form-control" >
                     <option  value="">- Select engine type -</option>
-                    <option th:each="engineType : ${engineTypes}" th:value="${engineType}" th:text="${engineType}">
+                    <option th:each="engine : ${T(org.softuni.mobilele.model.entity.enums.EngineEnum).values()}" th:value="${engine}" th:text="${engine}">
                         Engine type
                     </option>
                 </select>
@@ -75,13 +77,13 @@
 <!--                </p>-->
 
             </div>
-            <div th:object="${transmissionTypes}" class="form-group col-md-6 mb-3">
+            <div class="form-group col-md-6 mb-3">
 
                 <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
 
-                <select id="transmission" class="form-control">
+                <select id="transmission" name="transmission" class="form-control">
                     <option value="">- Select transmission type -</option>
-                    <option th:each="transmissionType : ${transmissionTypes}"  th:value="${transmissionType}" th:text="${transmissionType}"> Transmission type
+                    <option th:each="transmission : ${T(org.softuni.mobilele.model.entity.enums.TransmissionEnum).values()}" th:value="${transmission}" th:text="${transmission}"> Transmission type
                     </option>
                 </select>
 
@@ -97,7 +99,7 @@
 
                 <label for="year" class="text-white font-weight-bold">Year</label>
 
-                <input id="year" type="number" min="1900" max="2099" step="1" class="form-control"
+                <input id="year" name="year" type="number" min="1900" max="2099" step="1" class="form-control"
                        placeholder="Manufacturing year"/>
 
 <!--                <p class="errors alert alert-danger">-->
@@ -110,7 +112,7 @@
 
                 <label for="mileage" class="text-white font-weight-bold">Mileage</label>
 
-                <input id="mileage" type="number" min="0" max="900000" step="1000"
+                <input id="mileage" name="mileage" type="number" min="0" max="900000" step="1000"
                        class="form-control"
                        placeholder="Mileage in kilometers"/>
 

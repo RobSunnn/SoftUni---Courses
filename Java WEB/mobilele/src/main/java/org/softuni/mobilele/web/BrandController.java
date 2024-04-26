@@ -1,14 +1,12 @@
 package org.softuni.mobilele.web;
 
 import org.softuni.mobilele.model.dto.BrandDTO;
-import org.softuni.mobilele.model.dto.ModelsDTO;
 import org.softuni.mobilele.service.BrandService;
 import org.softuni.mobilele.service.ModelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

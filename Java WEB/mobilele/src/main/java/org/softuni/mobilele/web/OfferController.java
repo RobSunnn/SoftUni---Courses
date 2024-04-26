@@ -43,12 +43,9 @@ public class OfferController {
 
     @GetMapping("/add")
     public String add(Model model) {
-        EngineEnum[] engineTypes = EngineEnum.values();
-        TransmissionEnum[] transmissionTypes = TransmissionEnum.values();
+
         List<BrandDTO> allBrands = this.brandService.getAllBrands();
 
-        model.addAttribute("engineTypes", engineTypes);
-        model.addAttribute("transmissionTypes", transmissionTypes);
         model.addAttribute("allBrands", allBrands);
 
 
