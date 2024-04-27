@@ -1,8 +1,8 @@
 package org.softuni.mobilele.model.dto;
 
-import org.softuni.mobilele.model.entity.enums.CategoryOfVehicleEnum;
-
 public class ModelsDTO {
+
+    private Long id;
 
     private String modelName;
 
@@ -13,6 +13,14 @@ public class ModelsDTO {
     private Long brandId;
 
     public ModelsDTO() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getModelName() {
         return modelName;

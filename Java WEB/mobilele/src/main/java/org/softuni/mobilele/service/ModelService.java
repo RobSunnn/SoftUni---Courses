@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ModelService {
 
+    List<ModelsDTO> findAll();
+
     List<ModelsDTO> getAllByBrandId(Long id);
 
 }

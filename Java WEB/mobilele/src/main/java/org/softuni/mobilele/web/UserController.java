@@ -25,7 +25,7 @@ public class UserController {
 
 
     @GetMapping("/login")
-    @PreAuthorize("isAnonymous()")
+//    @PreAuthorize("isAnonymous()")
     public ModelAndView login() {
         return new ModelAndView("auth-login");
     }

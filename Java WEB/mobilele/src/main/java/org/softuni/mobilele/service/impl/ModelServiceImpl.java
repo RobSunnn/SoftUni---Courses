@@ -29,13 +29,23 @@ public class ModelServiceImpl implements ModelService {
         return allModelsDTO;
     }
 
+    public List<ModelsDTO> findAll() {
+        List<ModelEntity> allModels = this.modelRepository.findAll();
+        List<ModelsDTO> allModelsDTO = new ArrayList<>();
+
+        for (ModelEntity model : allModels) {
+            allModelsDTO.add(mapModel(model));
+        }
+
+        return allModelsDTO;
+
+    }
+
     private ModelsDTO mapModel(ModelEntity model) {
         ModelsDTO modelsDTO = new ModelsDTO();
 
+        modelsDTO.setId(model.getId());
         modelsDTO.setModelName(model.getModelName());
-        modelsDTO.setCategory(model.getCategory().name());
-        modelsDTO.setImageUrl(model.getImageUrl());
-        modelsDTO.setBrandId(model.getBrand().getId());
 
         return modelsDTO;
     }

@@ -11,20 +11,29 @@
 </div>
 
 <div class="container" sec:authorize="!isAuthenticated()">
+
     <h2 class="text-center text-white">Login</h2>
+
     <form th:method="POST" th:action="@{/users/login}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+
         <div class="form-group">
+
             <label for="email" class="text-white font-weight-bold">Email</label>
+
             <input id="email"
                    name="email"
                    type="text"
                    th:value="${email}"
                    class="form-control"
                    placeholder="Enter your Email"/>
+
         </div>
+
         <div class="form-group">
+
             <label for="password" class="text-white font-weight-bold">Password</label>
+
             <input   id="password"
                      name="password"
                      type="password"

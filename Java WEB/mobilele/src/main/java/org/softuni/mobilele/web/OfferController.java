@@ -3,6 +3,7 @@ package org.softuni.mobilele.web;
 import jakarta.validation.Valid;
 import org.softuni.mobilele.model.dto.BrandDTO;
 import org.softuni.mobilele.model.dto.CreateOfferDTO;
+import org.softuni.mobilele.model.dto.ModelsDTO;
 import org.softuni.mobilele.model.entity.enums.EngineEnum;
 import org.softuni.mobilele.model.entity.enums.TransmissionEnum;
 import org.softuni.mobilele.service.BrandService;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.UUID;
@@ -42,34 +44,42 @@ public class OfferController {
 
 
     @GetMapping("/add")
-    public String add(Model model) {
+    public String add(@ModelAttribute("createOfferDTO") CreateOfferDTO createOfferDTO,
+                          Model model) {
+
+        if (!model.containsAttribute("createOfferDTO")) {
+            model.addAttribute("createOfferDTO", new CreateOfferDTO());
+        }
 
         List<BrandDTO> allBrands = this.brandService.getAllBrands();
 
         model.addAttribute("allBrands", allBrands);
 
-
         return "offer-add";
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("createOfferDTO")
+    public String add(
                       @Valid CreateOfferDTO createOfferDTO,
-                      BindingResult bindingResult) {
+                      BindingResult bindingResult,
+                      RedirectAttributes rAtt) {
 
         if (bindingResult.hasErrors()) {
-            return "offer-add";
+            rAtt.addFlashAttribute("createOfferDTO", createOfferDTO);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.createOfferDTO", bindingResult);
+
+            return "redirect:/offers/add";
         }
 
-        this.offerService.createOffer(createOfferDTO);
+        UUID offerUUID = this.offerService.createOffer(createOfferDTO);
 
-        return "index";
+        return "redirect:/offers/" + offerUUID;
     }
 
 
-//    @GetMapping("/{uuid}/details")
-//    public ModelAndView details(@PathVariable("uuid") UUID uuid) {
-//        return new ModelAndView("details");
-//    }
+    @GetMapping("/{uuid}")
+    public String details(@PathVariable("uuid") UUID uuid) {
+        return "details";
+    }
 
 }

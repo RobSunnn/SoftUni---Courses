@@ -24,6 +24,7 @@ public class SecurityConfiguration {
                         // Everyone can see the home page, login and register and all offers.
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/offers/all").permitAll()
+                        .requestMatchers("/brands/all").permitAll()
                         //Every other request need authentication.
                         .anyRequest().authenticated()
         ).formLogin(

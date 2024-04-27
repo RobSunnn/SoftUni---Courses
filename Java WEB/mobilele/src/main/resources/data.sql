@@ -20,6 +20,12 @@ VALUES
     (2, 'Jigi','CAR' , 2, 'https://upload.wikimedia.org/wikipedia/commons/e/e5/1980_-_VAZ_2101.JPG'),
     (3, '1600s','CAR' , 3, 'https://cdn4.focus.bg/fakti/photos/big/3a3/55-hil-evro-za-lada-1.jpg');
 
+-- INSERT INTO models(id, category, brand_id, model_name)
+-- VALUES
+--     (1,'CAR', 1, '601'),
+--     (2, 'CAR', 2, 'Jigi'),
+--     (3,'CAR' , 3, '1600s');
+
 INSERT INTO users_user_roles(user_id, role_id)
 VALUES
     (1, 1),

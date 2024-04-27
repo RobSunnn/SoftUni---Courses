@@ -8,6 +8,9 @@ spring:
       static-locations: file:src/main/resources/static/
       cache:
         period: 0
+  sql:
+    init:
+      mode: never
   jpa:
     properties:
       hibernate:
@@ -15,6 +18,7 @@ spring:
         format_sql: 'TRUE'
     hibernate:
       ddl-auto: update
+
     open-in-view: 'false'
   mvc:
     hiddenmethod:

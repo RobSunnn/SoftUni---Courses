@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 
 public class CreateOfferDTO {
 
-
-    private ModelEntity model;
+    @NotNull
+    private Long modelId;
 
     @Size(min = 2, max = 150)
     private String description;
@@ -38,12 +38,12 @@ public class CreateOfferDTO {
 
     public CreateOfferDTO() {}
 
-    public ModelEntity getModel() {
-        return model;
+    public Long getModelId() {
+        return modelId;
     }
 
-    public void setModel(ModelEntity model) {
-        this.model = model;
+    public void setModelId(Long modelId) {
+        this.modelId = modelId;
     }
 
     public String getDescription() {

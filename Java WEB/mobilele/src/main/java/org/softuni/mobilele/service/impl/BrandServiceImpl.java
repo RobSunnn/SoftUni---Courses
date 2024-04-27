@@ -42,7 +42,6 @@ public class BrandServiceImpl implements BrandService {
         BrandDTO brandDTO = new BrandDTO();
         List<ModelsDTO> allModelsByBrandId = this.modelService.getAllByBrandId(brand.getId());
 
-        brandDTO.setId(brand.getId());
         brandDTO.setBrandName(brand.getBrandName());
         brandDTO.setModels(allModelsByBrandId);
 
