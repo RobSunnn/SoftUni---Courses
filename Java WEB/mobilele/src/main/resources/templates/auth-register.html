@@ -26,11 +26,11 @@
                 <label for="firstName" class="text-white font-weight-bold">First Name</label>
                 <input  id="firstName"
                         th:field="*{firstName}"
-                        th:errorclass="bg-danger"
+                        th:errorclass="is-invalid"
                         name="firstName"
                         type="text"  class="form-control"
                        placeholder="First name"/>
-                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     First name is required.
                 </p>
             </div>
@@ -40,11 +40,11 @@
                 <input id="lastName"
                        name="lastName"
                        th:field="*{lastName}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
                        placeholder="Last name"/>
-                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"  class="errors alert alert-danger">
+                <p   class="invalid-feedback errors alert alert-danger">
                     Last name is required.
                 </p>
             </div>
@@ -57,10 +57,10 @@
                 <input id="password"
                        name="password"
                        th:field="*{password}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        type="password" min="2" max="20" class="form-control"
                        placeholder="Password"/>
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     Password is required.
                 </p>
             </div>
@@ -70,10 +70,10 @@
                 <input id="confirmPassword"
                        name="confirmPassword"
                        th:field="*{confirmPassword}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        type="password" min="2" max="20" class="form-control"
                        placeholder="Confirm Password"/>
-                <p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     Confirm Password is required.
                 </p>
             </div>
@@ -83,11 +83,11 @@
                 <input id="email"
                        name="email"
                        th:field="*{email}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
                        placeholder="Email"/>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="errors alert alert-danger">
+                <p class="invalid-feedback errors alert alert-danger">
                     Email is required.
                 </p>
             </div>
@@ -97,11 +97,11 @@
                 <input id="username"
                        name="username"
                        th:field="*{username}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
                        placeholder="Username"/>
-                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     Username is required.
                 </p>
             </div>

@@ -28,7 +28,7 @@ public class OfferServiceImpl implements OfferService {
     public UUID createOffer(CreateOfferDTO createOfferDTO) {
 
         OfferEntity offerEntity = mapOffer(createOfferDTO);
-        ModelEntity model = modelRepository.findById(createOfferDTO.getModelId()).orElseThrow(() ->
+        ModelEntity model = modelRepository.findById(createOfferDTO.modelId()).orElseThrow(() ->
                 new IllegalArgumentException("Model don't exist"));
 
         offerEntity.setModel(model);
@@ -43,13 +43,13 @@ public class OfferServiceImpl implements OfferService {
 
         offerEntity.setUuid(UUID.randomUUID());
         offerEntity.setCreated(LocalDate.now());
-        offerEntity.setPrice(createOfferDTO.getPrice());
-        offerEntity.setEngine(createOfferDTO.getEngine());
-        offerEntity.setTransmission(createOfferDTO.getTransmission());
-        offerEntity.setYear(createOfferDTO.getYear());
-        offerEntity.setMileage(createOfferDTO.getMileage());
-        offerEntity.setDescription(createOfferDTO.getDescription());
-        offerEntity.setImageUrl(createOfferDTO.getImageUrl());
+        offerEntity.setPrice(createOfferDTO.price());
+        offerEntity.setEngine(createOfferDTO.engine());
+        offerEntity.setTransmission(createOfferDTO.transmission());
+        offerEntity.setYear(createOfferDTO.year());
+        offerEntity.setMileage(createOfferDTO.mileage());
+        offerEntity.setDescription(createOfferDTO.description());
+        offerEntity.setImageUrl(createOfferDTO.imageUrl());
 
         return offerEntity;
     }

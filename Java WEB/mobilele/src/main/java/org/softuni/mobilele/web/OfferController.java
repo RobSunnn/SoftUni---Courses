@@ -12,6 +12,8 @@ import org.softuni.mobilele.service.OfferService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -44,11 +46,10 @@ public class OfferController {
 
 
     @GetMapping("/add")
-    public String add(@ModelAttribute("createOfferDTO") CreateOfferDTO createOfferDTO,
-                          Model model) {
+    public String add(Model model) {
 
         if (!model.containsAttribute("createOfferDTO")) {
-            model.addAttribute("createOfferDTO", new CreateOfferDTO());
+            model.addAttribute("createOfferDTO", CreateOfferDTO.empty());
         }
 
         List<BrandDTO> allBrands = this.brandService.getAllBrands();
@@ -59,21 +60,21 @@ public class OfferController {
     }
 
     @PostMapping("/add")
-    public String add(
-                      @Valid CreateOfferDTO createOfferDTO,
-                      BindingResult bindingResult,
-                      RedirectAttributes rAtt) {
+    public ModelAndView add(
+            @Valid CreateOfferDTO createOfferDTO,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
 
-        if (bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()){
             rAtt.addFlashAttribute("createOfferDTO", createOfferDTO);
             rAtt.addFlashAttribute("org.springframework.validation.BindingResult.createOfferDTO", bindingResult);
-
-            return "redirect:/offers/add";
+            return new ModelAndView("redirect:/offers/add");
         }
 
-        UUID offerUUID = this.offerService.createOffer(createOfferDTO);
 
-        return "redirect:/offers/" + offerUUID;
+        UUID newOfferUUID = offerService.createOffer(createOfferDTO);
+
+        return new ModelAndView("redirect:/offers/" + newOfferUUID);
     }
 
 

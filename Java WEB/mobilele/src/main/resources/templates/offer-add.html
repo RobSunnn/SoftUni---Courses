@@ -20,14 +20,15 @@
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div class="row">
 
-            <div th:object="${allBrands}" class="form-group col-md-6 mb-3">
+
+            <div  class="form-group col-md-6 mb-3">
 
                 <label class="text-center text-white font-weight-bold" for="modelId">Model</label>
 
                 <select id="modelId"
-
                         th:name="modelId"
-
+                        th:field="*{modelId}"
+                        th:errorclass="is-invalid"
                         class="form-control">
 
                     <option   value="">- Select a model -</option>
@@ -39,6 +40,7 @@
                                 th:value="${m.getId()}"
                                 th:text="${m.getModelName()}"
                                 th:label="${m.getModelName()}"
+                                th:selected="${createOfferDTO.modelId == m.getId()}"
                         >Model</option>
 
                     </optgroup>
@@ -62,8 +64,7 @@
 
                        class="form-control"
                        placeholder="Suggested price"/>
-
-                <p class="invalid-feedback errors alert alert-danger">
+                <p class="invalid-feedback alert alert-danger">
                     Suggested price is required.
                 </p>
 
@@ -79,7 +80,7 @@
 
                 <select id="engine"
                         th:field="*{engine}"
-                        th:errorclass="bg-danger"
+                        th:errorclass="is-invalid"
                         class="form-control" >
 
                     <option  value="">- Select engine type -</option>
@@ -92,7 +93,7 @@
 
                 </select>
 
-                <p th:if="${#fields.hasErrors('engine')}" th:errors="*{engine}" class="errors alert alert-danger">
+                <p  class="invalid-feedback alert alert-danger">
                     Engine type is required.
                 </p>
 
@@ -104,7 +105,7 @@
 
                 <select id="transmission"
                         th:field="*{transmission}"
-                        th:errorclass="bg-danger"
+                        th:errorclass="is-invalid"
                         name="transmission"
                         class="form-control">
 
@@ -117,7 +118,7 @@
 
                 </select>
 
-                <p th:if="${#fields.hasErrors('transmission')}" th:errors="*{transmission}" class="errors alert alert-danger">
+                <p  class="invalid-feedback alert alert-danger">
                     Transmission type is required.
                 </p>
 
@@ -131,13 +132,13 @@
 
                 <input id="year"
                        th:field="*{year}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        name="year"
                        type="number" min="1900"
                        max="2099" step="1" class="form-control"
                        placeholder="Manufacturing year"/>
 
-                <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="errors alert alert-danger">
+                <p  class="invalid-feedback alert alert-danger">
                     Manufacturing year is required.
                 </p>
 
@@ -149,7 +150,7 @@
 
                 <input id="mileage"
                        th:field="*{mileage}"
-                       th:errorclass="bg-danger"
+                       th:errorclass="is-invalid"
                        name="mileage"
                        type="number"
                        min="0"
@@ -158,7 +159,7 @@
                        class="form-control"
                        placeholder="Mileage in kilometers"/>
 
-                <p th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}" class="errors alert alert-danger">
+                <p  class="invalid-feedback alert alert-danger">
                     Mileage in kilometers is required.
                 </p>
 
@@ -171,7 +172,7 @@
 
             <textarea id="description"
                       th:field="*{description}"
-                      th:errorclass="bg-danger"
+                      th:errorclass="is-invalid"
                       name="description"
                       type="textarea"
                       class="form-control" rows="3"
@@ -179,7 +180,7 @@
 
             </textarea>
 
-            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"  class="errors alert alert-danger">
+            <p class="invalid-feedback alert alert-danger">
                 Description is required.
             </p>
 
@@ -190,13 +191,13 @@
 
             <input id="imageUrl"
                    th:field="*{imageUrl}"
-                   th:errorclass="bg-danger"
+                   th:errorclass="is-invalid"
                    name="imageUrl"
                    type="url"
                    class="form-control"
                    placeholder="Put vehicle image URL here">
 
-            <p th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="errors alert alert-danger">
+            <p  class="invalid-feedback alert alert-danger">
                 Vehicle image URL is required.
             </p>
 

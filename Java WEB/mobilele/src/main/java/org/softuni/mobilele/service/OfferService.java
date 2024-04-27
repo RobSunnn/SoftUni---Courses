@@ -7,4 +7,5 @@ import java.util.UUID;
 public interface OfferService {
 
     UUID createOffer(CreateOfferDTO createOfferDTO);
+
 }
